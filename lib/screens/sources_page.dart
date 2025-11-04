@@ -70,6 +70,7 @@ class _SourcesPageState extends State<SourcesPage> {
                   ),
                 );
                 if (urls == null || urls.isEmpty) return;
+                var importCount = 0;
                 for (final url in urls) {
                   if (url.isEmpty) continue;
                   final alreadyExists = sources.any((s) => s.sourceURL == url);
@@ -121,6 +122,7 @@ class _SourcesPageState extends State<SourcesPage> {
                       );
 
                       await DatabaseHelper().insertSource(newSource.toMap());
+                      importCount += 1;
 
                       if (context.mounted) {
                         try {
@@ -174,6 +176,23 @@ class _SourcesPageState extends State<SourcesPage> {
                       isAddingSource = false;
                     });
                   }
+                }
+                if (importCount > 0 && context.mounted) {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (_) => CupertinoAlertDialog(
+                      title: const Text('Import Complete'),
+                      content: Text(
+                        'Successfully imported $importCount source${importCount > 1 ? 's' : ''}.',
+                      ),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: const Text('OK'),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                  );
                 }
               },
               child: isAddingSource
@@ -405,6 +424,19 @@ class _SourcesPageState extends State<SourcesPage> {
                                     width: 60,
                                     height: 60,
                                     fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) => Container(
+                                      width: 60,
+                                      height: 60,
+                                      color: CupertinoColors
+                                          .systemGrey5
+                                          .resolveFrom(context),
+                                      child: Icon(
+                                        Ionicons.planet_outline,
+                                        size: 40,
+                                        color: CupertinoColors.systemGrey3
+                                            .resolveFrom(context),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

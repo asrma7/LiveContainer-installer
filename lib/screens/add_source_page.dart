@@ -125,6 +125,28 @@ class _AddSourcePageState extends State<AddSourcePage> {
                         'text/plain',
                       );
                       if (clipboardData == null || clipboardData.text == null) {
+                        if (context.mounted) {
+                          showCupertinoDialog(
+                            context: context,
+                            builder: (context) {
+                              return CupertinoAlertDialog(
+                                title: const Text("Error"),
+                                content: const Text(
+                                  "No text data found in clipboard.",
+                                ),
+                                actions: [
+                                  CupertinoDialogAction(
+                                    isDefaultAction: true,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("OK"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                         return;
                       }
                       final sources = ASDeobfuscator(
@@ -159,6 +181,27 @@ class _AddSourcePageState extends State<AddSourcePage> {
                           .toList();
                       Clipboard.setData(
                         ClipboardData(text: sourceUrls.join('\n')),
+                      );
+                      if (!context.mounted) return;
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoAlertDialog(
+                            title: const Text("Exported"),
+                            content: const Text(
+                              "Source URLs have been copied to clipboard.",
+                            ),
+                            actions: [
+                              CupertinoDialogAction(
+                                isDefaultAction: true,
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text("OK"),
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                     child: Row(
@@ -198,6 +241,15 @@ class _AddSourcePageState extends State<AddSourcePage> {
                       width: 40,
                       height: 40,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: 40,
+                        height: 40,
+                        color: CupertinoColors.systemGrey,
+                        child: const Icon(
+                          CupertinoIcons.photo,
+                          color: CupertinoColors.white,
+                        ),
+                      ),
                     ),
                   ),
                   title: Text(repo["name"]!),

@@ -26,8 +26,8 @@ class AppViewPage extends StatelessWidget {
         );
         final isUpdate =
             isInstalled &&
-            DateTime.parse(app.latestVersion.date).isAfter(
-              DateTime.parse(
+            safeParseDate(app.latestVersion.date).isAfter(
+              safeParseDate(
                 installedAppsNotifier
                     .appMap["${app.bundleIdentifier}_${app.sourceId}"]!
                     .versionDate,
@@ -57,6 +57,16 @@ class AppViewPage extends StatelessWidget {
                       width: double.infinity,
                       height: 250.0,
                       fit: BoxFit.fitWidth,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: double.infinity,
+                        height: 250.0,
+                        color: Colors.grey,
+                        child: const Icon(
+                          CupertinoIcons.photo,
+                          color: CupertinoColors.white,
+                          size: 60.0,
+                        ),
+                      ),
                     ),
                     ClipRect(
                       child: BackdropFilter(
@@ -89,6 +99,15 @@ class AppViewPage extends StatelessWidget {
                           width: 80.0,
                           height: 80.0,
                           fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => Container(
+                            width: 80.0,
+                            height: 80.0,
+                            color: Colors.grey,
+                            child: const Icon(
+                              CupertinoIcons.photo,
+                              color: CupertinoColors.white,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 16.0),
@@ -249,6 +268,15 @@ class AppViewPage extends StatelessWidget {
                             child: Image.network(
                               screenshot.imageURL,
                               fit: BoxFit.contain,
+                              errorBuilder: (context, error, stackTrace) => Container(
+                                width: 80.0,
+                                height: 80.0,
+                                color: Colors.grey,
+                                child: const Icon(
+                                  CupertinoIcons.photo,
+                                  color: CupertinoColors.white,
+                                ),
+                              ),
                             ),
                           ),
                         );

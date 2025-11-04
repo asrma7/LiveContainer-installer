@@ -59,3 +59,21 @@ String timeAgo(String dateStr) {
     return dateStr;
   }
 }
+
+DateTime safeParseDate(String input) {
+  input = input.trim().replaceAll('/', '-');
+
+  try {
+    return DateTime.parse(input);
+  } catch (_) {
+    final match = RegExp(r'^(\d{4})-(\d{1,2})-(\d{1,2})$').firstMatch(input);
+    if (match != null) {
+      final year = match.group(1)!;
+      final month = match.group(2)!.padLeft(2, '0');
+      final day = match.group(3)!.padLeft(2, '0');
+      return DateTime.parse('$year-$month-$day');
+    }
+
+    throw FormatException('Unsupported date format: $input');
+  }
+}

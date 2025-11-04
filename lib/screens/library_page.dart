@@ -4,6 +4,7 @@ import 'package:lcinstaller/database_helper.dart';
 import 'package:lcinstaller/notifiers/apps_notifier.dart';
 import 'package:lcinstaller/notifiers/installed_apps_notifier.dart';
 import 'package:lcinstaller/screens/app_view_page.dart';
+import 'package:lcinstaller/utils/formatters.dart';
 import 'package:lcinstaller/widgets/header_delegate.dart';
 import 'package:lcinstaller/widgets/search_bar_delegate.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +33,9 @@ class _LibraryPageState extends State<LibraryPage> {
               "${installedApp.bundleIdentifier}_${installedApp.sourceId}";
           final app = appMap[key];
           if (app == null) return false;
-          return DateTime.parse(
+          return safeParseDate(
             app.latestVersion.date,
-          ).isAfter(DateTime.parse(installedApp.versionDate));
+          ).isAfter(safeParseDate(installedApp.versionDate));
         }).toList();
 
         final filteredApps = searchQuery.isEmpty
@@ -196,6 +197,15 @@ class _LibraryPageState extends State<LibraryPage> {
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => Container(
+                                  width: 60,
+                                  height: 60,
+                                  color: CupertinoColors.systemGrey,
+                                  child: const Icon(
+                                    CupertinoIcons.photo,
+                                    color: CupertinoColors.white,
+                                  ),
+                              ),
                               ),
                             ),
                           ),
@@ -425,6 +435,15 @@ class _LibraryPageState extends State<LibraryPage> {
                                     width: 60,
                                     height: 60,
                                     fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) => Container(
+                                        width: 60,
+                                        height: 60,
+                                        color: CupertinoColors.systemGrey,
+                                        child: const Icon(
+                                          CupertinoIcons.photo,
+                                          color: CupertinoColors.white,
+                                        ),
+                                      ),
                                   ),
                                 ),
                               ),

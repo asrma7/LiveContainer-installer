@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0
+- Fixed issue with unsupported versionDate in some repositories like SpotCompiled causing app library to fail to load.
+- Added visual notification of Import and Export in Add Source Page.
+- Added template image for invalid image in source or app.
+
 ## v1.1.0
 - Library page now shows installed apps and available updates.
 - Workaround implemented to track installed app. (Does not retrieve data from Live Container)

@@ -198,6 +198,21 @@ class _AppsPageState extends State<AppsPage> {
                                           width: 60,
                                           height: 60,
                                           fit: BoxFit.cover,
+                                          errorBuilder:
+                                              (
+                                                context,
+                                                error,
+                                                stackTrace,
+                                              ) => Container(
+                                                width: 60,
+                                                height: 60,
+                                                color:
+                                                    CupertinoColors.systemGrey,
+                                                child: const Icon(
+                                                  CupertinoIcons.photo,
+                                                  color: CupertinoColors.white,
+                                                ),
+                                              ),
                                         ),
                                       ),
                                       Positioned(
@@ -212,6 +227,23 @@ class _AppsPageState extends State<AppsPage> {
                                             width: 20,
                                             height: 20,
                                             fit: BoxFit.cover,
+                                            errorBuilder:
+                                                (
+                                                  context,
+                                                  error,
+                                                  stackTrace,
+                                                ) => Container(
+                                                  width: 20,
+                                                  height: 20,
+                                                  color: CupertinoColors
+                                                      .systemGrey,
+                                                  child: const Icon(
+                                                    CupertinoIcons.photo,
+                                                    color:
+                                                        CupertinoColors.white,
+                                                    size: 12,
+                                                  ),
+                                                ),
                                           ),
                                         ),
                                       ),
