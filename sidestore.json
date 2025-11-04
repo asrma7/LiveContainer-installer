@@ -11,15 +11,22 @@
       "bundleIdentifier": "site.ashutoshportfolio.lcinstaller",
       "developerName": "Ashutosh Sharma",
       "subtitle": "App installer for LiveContainer",
-      "version": "1.1.0",
-      "versionDate": "2025-09-12T05:56:55Z",
-      "versionDescription": "- Library page now shows installed apps and available updates.\n- Workaround implemented to track installed app. (Does not retrieve data from Live Container)",
-      "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.1.0/LcInstaller.ipa",
+      "version": "1.2.0",
+      "versionDate": "2025-11-04T01:29:42Z",
+      "versionDescription": "- Fixed issue with unsupported versionDate in some repositories like SpotCompiled causing app library to fail to load.\n- Added visual notification of Import and Export in Add Source Page.\n- Added template image for invalid image in source or app.",
+      "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.0/LcInstaller.ipa",
       "localizedDescription": "Install apps on LiveContainer from different sources with ease!",
       "iconURL": "https://raw.githubusercontent.com/asrma7/LiveContainer-installer/main/screenshots/100.png",
       "tintColor": "#307CFF",
-      "size": 8095096,
+      "size": 8095146,
       "versions": [
+        {
+          "version": "1.2.0",
+          "date": "2025-11-04T01:29:42Z",
+          "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.0/LcInstaller.ipa",
+          "localizedDescription": "- Fixed issue with unsupported versionDate in some repositories like SpotCompiled causing app library to fail to load.\n- Added visual notification of Import and Export in Add Source Page.\n- Added template image for invalid image in source or app.",
+          "size": 8095146
+        },
         {
           "version": "1.1.0",
           "date": "2025-09-12T05:56:55Z",
