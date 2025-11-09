@@ -11,15 +11,22 @@
       "bundleIdentifier": "site.ashutoshportfolio.lcinstaller",
       "developerName": "Ashutosh Sharma",
       "subtitle": "App installer for LiveContainer",
-      "version": "1.2.0",
-      "versionDate": "2025-11-04T01:29:42Z",
-      "versionDescription": "- Fixed issue with unsupported versionDate in some repositories like SpotCompiled causing app library to fail to load.\n- Added visual notification of Import and Export in Add Source Page.\n- Added template image for invalid image in source or app.",
-      "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.0/LcInstaller.ipa",
+      "version": "1.2.1",
+      "versionDate": "2025-11-09T00:24:51Z",
+      "versionDescription": "\n- Fixed issue with incorrect latest version due to missing leading zero in version dates.",
+      "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.1/LcInstaller.ipa",
       "localizedDescription": "Install apps on LiveContainer from different sources with ease!",
       "iconURL": "https://raw.githubusercontent.com/asrma7/LiveContainer-installer/main/screenshots/100.png",
       "tintColor": "#307CFF",
-      "size": 8095146,
+      "size": 8095982,
       "versions": [
+        {
+          "version": "1.2.1",
+          "date": "2025-11-09T00:24:51Z",
+          "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.1/LcInstaller.ipa",
+          "localizedDescription": "\n- Fixed issue with incorrect latest version due to missing leading zero in version dates.",
+          "size": 8095982
+        },
         {
           "version": "1.2.0",
           "date": "2025-11-04T01:29:42Z",
