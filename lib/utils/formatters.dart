@@ -77,3 +77,14 @@ DateTime safeParseDate(String input) {
     throw FormatException('Unsupported date format: $input');
   }
 }
+
+String formatDateWithLeadingZeros(String date) {
+  String twoDigits(int n) => n.toString().padLeft(2, '0');
+
+  final parsedDate = safeParseDate(date);
+  final year = parsedDate.year.toString();
+  final month = twoDigits(parsedDate.month);
+  final day = twoDigits(parsedDate.day);
+
+  return '$year-$month-$day';
+}

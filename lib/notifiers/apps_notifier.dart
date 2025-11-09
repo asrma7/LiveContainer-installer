@@ -5,6 +5,8 @@ import 'package:lcinstaller/models/source.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:lcinstaller/utils/formatters.dart';
+
 class AppsNotifier extends ChangeNotifier {
   List<AppWithSource> _apps = [];
   Map<String, AppWithSource> _appMap = {};
@@ -71,7 +73,9 @@ class AppsNotifier extends ChangeNotifier {
           versions.add(
             Versions(
               version: v['version'] ?? '',
-              date: v['date'] ?? '',
+              date: v['date'] != null
+                  ? formatDateWithLeadingZeros(v['date'])
+                  : '',
               size: v['size'] ?? 0,
               downloadURL: v['downloadURL'] ?? '',
               localizedDescription: v['localizedDescription'] ?? '',
@@ -83,7 +87,9 @@ class AppsNotifier extends ChangeNotifier {
       versions.add(
         Versions(
           version: appData['version'] ?? '',
-          date: appData['versionDate'] ?? '',
+          date: appData['versionDate'] != null
+              ? formatDateWithLeadingZeros(appData['versionDate'])
+              : '',
           size: appData['size'] ?? 0,
           downloadURL: appData['downloadURL'] ?? '',
           localizedDescription:
