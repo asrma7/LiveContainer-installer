@@ -11,15 +11,22 @@
       "bundleIdentifier": "site.ashutoshportfolio.lcinstaller",
       "developerName": "Ashutosh Sharma",
       "subtitle": "App installer for LiveContainer",
-      "version": "1.2.1",
-      "versionDate": "2025-11-09T00:24:51Z",
-      "versionDescription": "\n- Fixed issue with incorrect latest version due to missing leading zero in version dates.",
-      "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.1/LcInstaller.ipa",
+      "version": "1.2.2",
+      "versionDate": "2026-02-17T16:15:25Z",
+      "versionDescription": "\n- Improvement of add source to skip duplicate urls instead of cancelling the import.",
+      "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.2/LcInstaller.ipa",
       "localizedDescription": "Install apps on LiveContainer from different sources with ease!",
       "iconURL": "https://raw.githubusercontent.com/asrma7/LiveContainer-installer/main/screenshots/100.png",
       "tintColor": "#307CFF",
-      "size": 8095982,
+      "size": 8292824,
       "versions": [
+        {
+          "version": "1.2.2",
+          "date": "2026-02-17T16:15:25Z",
+          "downloadURL": "https://github.com/asrma7/LiveContainer-installer/releases/download/v1.2.2/LcInstaller.ipa",
+          "localizedDescription": "\n- Improvement of add source to skip duplicate urls instead of cancelling the import.",
+          "size": 8292824
+        },
         {
           "version": "1.2.1",
           "date": "2025-11-09T00:24:51Z",
