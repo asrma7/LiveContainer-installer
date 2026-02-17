@@ -1,3 +1,14 @@
+> [!IMPORTANT]
+> **Project Archived**
+>
+> LcInstaller is no longer actively maintained.
+>
+> This project was originally created after the mass revoke of developer certificates, when LiveContainer did not support repository based installs. LcInstaller provided a simple way to add repos and install apps directly into LiveContainer without manually downloading IPA files.
+>
+> LiveContainer now includes built in repository support, which makes LcInstaller largely unnecessary. Because of this, the project has been archived and will not receive further updates.
+>
+> Thank you to everyone who used and supported this project.
+> 
 # LcInstaller
 
 LcInstaller is a **Flutter app** that makes installing apps into [LiveContainer](https://github.com/LiveContainer/LiveContainer) effortless.
