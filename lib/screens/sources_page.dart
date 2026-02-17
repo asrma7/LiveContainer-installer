@@ -71,26 +71,13 @@ class _SourcesPageState extends State<SourcesPage> {
                 );
                 if (urls == null || urls.isEmpty) return;
                 var importCount = 0;
+                var duplicateSources = 0;
                 for (final url in urls) {
                   if (url.isEmpty) continue;
                   final alreadyExists = sources.any((s) => s.sourceURL == url);
                   if (alreadyExists) {
-                    if (context.mounted) {
-                      showCupertinoDialog(
-                        context: context,
-                        builder: (_) => CupertinoAlertDialog(
-                          title: const Text('Duplicate Source'),
-                          content: const Text('This source already exists.'),
-                          actions: [
-                            CupertinoDialogAction(
-                              child: const Text('OK'),
-                              onPressed: () => Navigator.pop(context),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                    return;
+                    duplicateSources += 1;
+                    continue;
                   }
                   setState(() {
                     isLoading = true;
@@ -176,6 +163,23 @@ class _SourcesPageState extends State<SourcesPage> {
                       isAddingSource = false;
                     });
                   }
+                }
+                if (duplicateSources > 0 && context.mounted) {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (_) => CupertinoAlertDialog(
+                      title: const Text('Duplicate Sources Skipped'),
+                      content: Text(
+                        'Skipped $duplicateSources duplicate source${duplicateSources > 1 ? 's' : ''}.',
+                      ),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: const Text('OK'),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                  );
                 }
                 if (importCount > 0 && context.mounted) {
                   showCupertinoDialog(
@@ -424,19 +428,21 @@ class _SourcesPageState extends State<SourcesPage> {
                                     width: 60,
                                     height: 60,
                                     fit: BoxFit.cover,
-                                    errorBuilder: (context, error, stackTrace) => Container(
-                                      width: 60,
-                                      height: 60,
-                                      color: CupertinoColors
-                                          .systemGrey5
-                                          .resolveFrom(context),
-                                      child: Icon(
-                                        Ionicons.planet_outline,
-                                        size: 40,
-                                        color: CupertinoColors.systemGrey3
-                                            .resolveFrom(context),
-                                      ),
-                                    ),
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            Container(
+                                              width: 60,
+                                              height: 60,
+                                              color: CupertinoColors.systemGrey5
+                                                  .resolveFrom(context),
+                                              child: Icon(
+                                                Ionicons.planet_outline,
+                                                size: 40,
+                                                color: CupertinoColors
+                                                    .systemGrey3
+                                                    .resolveFrom(context),
+                                              ),
+                                            ),
                                   ),
                                 ),
                               ),
