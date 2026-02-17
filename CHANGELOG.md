@@ -1,14 +1,18 @@
 # Changelog
 
+## v1.2.2
+
+- Improvement of add source to skip duplicate urls instead of cancelling the import.
+
 ## v1.2.1
 
-- Fixed issue with incorrect latest version due to missing leading zero in version dates.
+- Fix issue with incorrect latest version due to missing leading zero in version dates.
 
 ## v1.2.0
 
-- Fixed issue with unsupported versionDate in some repositories like SpotCompiled causing app library to fail to load.
-- Added visual notification of Import and Export in Add Source Page.
-- Added template image for invalid image in source or app.
+- Fix issue with unsupported versionDate in some repositories like SpotCompiled causing app library to fail to load.
+- Add visual notification of Import and Export in Add Source Page.
+- Add template image for invalid image in source or app.
 
 ## v1.1.0
 
